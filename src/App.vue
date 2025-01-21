@@ -1,30 +1,32 @@
 <script setup>
-import { ref, onMounted, watch } from "vue";
-import ChildComp from "./components/ChildComp.vue";
-
-let count = ref(0); // 상태변수 초기값(state)
-let title = "Hello Vue 3";
-let color = ref("green");
-
-onMounted(() => {
-  console.log("mounted");
-});
-
-const increaseCount = () => {
-  count.value++; // 상태변수 변경할때 .value 사용, Vue 2의 this.count++
-};
-
-watch(color, () => {});
+import Title from "./components/Title.vue";
+import Portfolio from "./components/Portfolio.vue";
 </script>
 
 <template>
-  <div class="wrap">
-    <h1>{{ title }}</h1>
-    <button @click="increaseCount">Count++</button>
-    <p>{{ count }}</p>
-    <ChildComp :color="color" bgColor="gold" />
-    <button @click="color = 'red'">change color</button>
-  </div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Doolee</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <Title />
+  <Portfolio />
 </template>
 
-<style scoped></style>
+<style scoped lang="scss"></style>
