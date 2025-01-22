@@ -6,12 +6,16 @@
         <img :src="item.imgUrl" alt="1" />
         <h3>{{ item.title }}</h3>
         <p>{{ item.desc }}</p>
+        <small class="mb-3 text-secondary">{{ item.skills }}</small>
+        <router-link class="btn btn-primary" :to="'/detail/' + item.id">상세보기</router-link>
       </li>
     </ul>
   </section>
 </template>
 <script setup>
-import data from "../assets/portfolio";
+const props = defineProps({
+  data: Array,
+}); // defineProps 함수를 사용하여 부모 컴포넌트로부터 데이터를 전달받습니다.
 </script>
 <style lang="scss">
 #portfolio {
